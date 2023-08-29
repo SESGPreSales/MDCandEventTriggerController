@@ -22,8 +22,8 @@ var channel4hex = new Uint8Array(channel4);
 
 // Screensettings
 const port = 1515;
-const hosts1 = ['192.168.11.80']; //Define the Ip addresses of the screens to control
-const hosts2 = ['192.168.11.81']; //Define the Ip addresses of the screens to control
+const hosts1 = env.params.HOST1 || ['192.168.11.80']; //Define the Ip addresses of the screens to control
+const hosts2 = env.params.HOST2 || ['192.168.11.81']; //Define the Ip addresses of the screens to control
 const commands = [panelonhex, channel1hex, channel2hex, channel3hex, channel4hex]
 
 function sendtoScreen(hosts, content) {   
