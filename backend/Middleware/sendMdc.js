@@ -2,20 +2,19 @@ const Net = require('net');
 
 function sendRj(host, port, hex) {
     setTimeout(function() {
-        //console.log('Starting ', num, hosts[num], port );
-		let obj = 'client' + num;
-		//console.log(obj);
-		obj = new Net.Socket();
+        //console.log('Starting ', host, port , hex);
+		// let obj = host;
+		//console.log(host);
+		let obj = new Net.Socket();
 		obj.connect({ port: port, host: host } , () => {
-			console.log(`TCP connection established with the screen ${host} `);
+			//console.log(`TCP connection established with the screen ${host} `);
 			setTimeout( ()=> {
 				obj.write(hex,  () => {
 					obj.destroy();	
-				//console.log('wrote.')			
+				  	console.log('wrote.')			
 						});
 				},200)			
 		 });
-		//console.log('Stopping ', num );
     }, 200);
 };
 
