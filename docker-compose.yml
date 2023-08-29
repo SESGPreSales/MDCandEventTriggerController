@@ -10,3 +10,7 @@ services:
     environment:
       HOST1: ['192.168.11.80']
       HOST2: ['192.168.11.81']
+
+  frontend:
+    build: frontend/.
+    
