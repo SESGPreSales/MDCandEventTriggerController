@@ -4,13 +4,14 @@ services:
   backend:
     build: backend/.
     ports:
-      - "3000"
+      - 3000
     volumes:
-      - .:/app
+      - ./backend/:/app
     environment:
-      HOST1: ['192.168.11.80']
-      HOST2: ['192.168.11.81']
+      HOST1: "['192.168.11.80']"
+      HOST2: "['192.168.11.81']"
 
   frontend:
     build: frontend/.
-    
+    ports:
+      - "8080:80"
