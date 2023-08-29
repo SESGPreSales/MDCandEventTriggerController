@@ -1,7 +1,6 @@
-const { SerialPort } = require('serialport')
-const axios = require('axios');
+//const { SerialPort } = require('serialport')
+//const axios = require('axios');
 const { sendRj } = require('./Middleware/sendMdc');
-const { sendcode } = require('./Middleware/sendMdc');
 require('./Middleware/sendMdc');
 
 
