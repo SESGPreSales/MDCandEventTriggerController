@@ -8,10 +8,16 @@ services:
     volumes:
       - ./backend/:/app
     environment:
-      HOST1: "192.168.243.66"
-      HOST2: "192.168.11.81"
+      HOST1: "192.168.243.66"  #defines displays to control. Comma separated list 
+      HOST2: "192.168.243.101"  #defines displays to control. Comma separated list 
+      MODE: "UDP"  # "MDC" or "UDP" UDP is used to send Event triggers, MDC sends TCP commands
 
-  frontend:
+  frontend1:
     build: frontend/.
     ports:
-      - "80:80"
+      - "8081:80"
+  
+  frontend2:
+    build: frontend/.
+    ports:
+      - "8082:80"
