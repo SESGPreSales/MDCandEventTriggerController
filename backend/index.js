@@ -25,8 +25,6 @@ var channel4hex = new Uint8Array(channel4);
 const hosts1 = process.env.HOST1 || '192.168.11.80'; //Define the Ip addresses of the screens to control
 const hosts2 = process.env.HOST2 || '192.168.11.81'; //Define the Ip addresses of the screens to control
 
-
-
 const commands = [panelonhex, channel1hex, channel2hex, channel3hex, channel4hex]
 
 //ports
@@ -35,13 +33,11 @@ const portUDP = 5000;
 
 
 function sendToScreenMDC(hosts, content) {   
-            sendRj(hosts, port, content)  ;
-            console.log('sendRJ sent')     
+            sendRj(hosts, port, content)  ;  
     };
 
 function sendToScreenUDP(hosts, content) {   
         sendUDP(hosts, portUDP, content)  ;
-        console.log('sendRJ sent')     
 };
 
 // Api for screens

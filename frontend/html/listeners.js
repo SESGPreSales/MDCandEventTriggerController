@@ -1,13 +1,14 @@
 const host = document.location.host;
 const hostURL = host.split(':')
 const hostPort = hostURL[1];
-const mode = process.env.MODE || 'UDP'; //UDP is default
+const mode = 'UDP' || 'UDP'; //UDP is default
+
 console.log(`The host is : ${hostURL[0]} and port is ${hostPort}`)
 console.log(`Mode is set to ${mode}`)
 
 const apiURL = `http://${hostURL[0]}:3000`
 
-const comms = [];
+let comms = [];
 mode === 'UDP' ? comms = ['uno','due','tre', 'quattro', 'cinque', 'sei', 'sette','otto','nove','dieci','undici','dodici','tredici'] : comms = ['1','2','3', '4', '5', '6', '7','8','9','10','11','12','13'];
 
 // Listeners
