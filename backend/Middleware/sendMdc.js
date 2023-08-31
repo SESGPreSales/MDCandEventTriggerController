@@ -1,8 +1,6 @@
 const Net = require('net');
 const dgram = require('dgram');
 
-
-
 function sendRj(host, port, hex) {
     setTimeout(function() {
         console.log('Starting ', host, port , hex);
@@ -22,19 +20,11 @@ function sendRj(host, port, hex) {
 };
 
 function sendUDP(host, port, command) {
-	const message = new Buffer('due');
+	const message = new Buffer(command);
 	const socket = dgram.createSocket('udp4');
-	socket.send(message, 0, message.length, port, host).then(console.log("UDP Sent"))
+	socket.send(message, 0, message.length, port, host)
 	
 }
-
-//just for Test, to remove afterwards
-// const paneloffToSend = [0xAA, 0xF9, 0xFE, 0x01, 0x00, 0xF8]
-// var paneloffhex = new Uint8Array(paneloffToSend);
-// let cmd = Buffer.from(paneloffToSend)
-
-
-//sendCode(paneloffhex)
 
 exports.sendRj = sendRj
 exports.sendUDP = sendUDP

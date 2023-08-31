@@ -21,28 +21,43 @@ var channel3hex = new Uint8Array(channel3);
 const channel4 = [0xAA, 0x1C, 0xFE, 0x03, 0x81, 0x00, 0x04, 0xA2]
 var channel4hex = new Uint8Array(channel4);
 
-// Screensettings
-const port = 1515;
+// Screensettings 
 const hosts1 = process.env.HOST1 || '192.168.11.80'; //Define the Ip addresses of the screens to control
 const hosts2 = process.env.HOST2 || '192.168.11.81'; //Define the Ip addresses of the screens to control
 const commands = [panelonhex, channel1hex, channel2hex, channel3hex, channel4hex]
 
-function sendtoScreen(hosts, content) {   
-                sendRj(hosts, port, content)  ;
-            console.log('sendRJ sent')     
-};
+//ports
+const port = 1515;
+const portUDP = 5000;
 
+
+function sendToScreenMDC(hosts, content) {   
+            sendRj(hosts, port, content)  ;
+            console.log('sendRJ sent')     
+    };
+
+function sendToScreenUDP(hosts, content) {   
+        sendUDP(hosts1, portUDP, content)  ;
+        console.log('sendRJ sent')     
+};
 
 // Api for screens
 app.get('/:id/:content', function (req, res) {
-        console.log(`Backend received ${req.params.id}`)
-        if (req.params.id ==1 ) {
-            sendtoScreen( hosts1, commands[req.params.content]);
-        }
-        else if  (req.params.id ==2 ) { sendUDP(hosts1, 5000, req.params.content)}
+
+    let content = req.params.content;
+    let id = req.params.id;
+
+    typeof content === 'number' ? sendToScreenMDC( hosts1, commands[req.params.content]) : sendToScreenUDP(hosts1, req.params.content);
+
+    
+        // if (req.params.id ==1 ) {
+        //     sendToScreenMDC( hosts1, commands[req.params.content]);
+        // }
+        // else if  (req.params.id ==2 ) { sendUDP(hosts1, 5000, req.params.content)}
         
-        res.status(200).send(console.log(`received id: ${req.params.id} content ${req.params.content}  `) )
-})
+    res.status(200).send(console.log(`received id: ${req.params.id} content ${req.params.content}  `) )
+
+    })
 
 // Comment : Run < export NODE_OPTIONS="--max-old-space-size=2048" > before starting node app
 
