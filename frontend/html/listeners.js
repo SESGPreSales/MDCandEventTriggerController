@@ -29,12 +29,12 @@ const button13 = document.querySelector(".item13");
 const buttons = document.querySelectorAll(".button");
 
 // Eventlisteners to call API
-button1.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[0]}`)});
-button2.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[1]}`)});
-button3.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[2]}`)});
-button4.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[3]}`)});
-button5.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[4]}`)});
-button6.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[5]}`)});
+button1.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[0]}`).then((e) => console.log(e)).catch((err) => console.log(err))});
+button2.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[1]}`).then((e) => console.log(e)).catch((err) => console.log(err))});
+button3.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[2]}`).then((e) => console.log(e)).catch((err) => console.log(err))});
+button4.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[3]}`).then((e) => console.log(e)).catch((err) => console.log(err))});
+button5.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[4]}`).then((e) => console.log(e)).catch((err) => console.log(err))});
+button6.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[5]}`).then((e) => console.log(e)).catch((err) => console.log(err))});
 // button7.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[6]}`)});
 // button8.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[7]}`)});
 // button9.addEventListener('click', ()=> {apiCall(`${apiURL}/${hostPort}/${comms[8]}`)});

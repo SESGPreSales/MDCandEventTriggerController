@@ -58,7 +58,7 @@ app.get('/:id/:content', function (req, res) {
         // }
         // else if  (req.params.id ==2 ) { sendUDP(hosts1, 5000, req.params.content)}
         
-    //res.status(200).send(console.log(`received id: ${req.params.id} content ${req.params.content}  `) )
+    res.status(200).send(console.log(`received id: ${req.params.id} content ${req.params.content}  `) )
 
     })
 
