@@ -20,11 +20,14 @@ function sendRj(host, port, hex) {
 };
 
 function sendUDP(host, port, command) {
-	const message = new Buffer(command);
+	const message = Buffer.from(command);
 	const socket = dgram.createSocket('udp4');
-	socket.send(message, 0, message.length, port, host)
-	
+	socket.send(message, 0, message.length, port, host, (err) => {
+		console.log(`Sent ${message} to ${host} - if Error then :`, err)
+		socket.close();
+		});	
 }
+
 
 exports.sendRj = sendRj
 exports.sendUDP = sendUDP
