@@ -1,4 +1,8 @@
-const apiURL = "backend"
+const host = document.location.host;
+console.log("the host is: ", host);
+const apiURL = `http://${host}:3000`
+
+
 
 // Listeners
 const buttonQSR = document.querySelector(".item1");
@@ -8,9 +12,10 @@ const buttonOnOff = document.querySelector(".item4");
 const buttons = document.querySelectorAll(".button");
 
 // Eventlisteners
-buttonQSR.addEventListener('click', ()=> {apiCall(`${apiURL}/1/1`).then(console.log("sentcommand"))});
+buttonQSR.addEventListener('click', ()=> {apiCall(`${apiURL}/2/due`).then(console.log("sentcommand"))});
 buttonFashion.addEventListener('click', ()=> {apiCall(`${apiURL}/1/2`).then(console.log("sentcommand"))});
 buttonCorporate.addEventListener('click', ()=> {apiCall(`${apiURL}/1/3`).then(console.log("sentcommand"))});
+buttonOnOff.addEventListener('click', ()=> {apiCall(`${apiURL}/1/4`).then(console.log("sentcommand"))});
 
 //Call API Call
 // async function changeChannel(url = "", data = {}, token) {
@@ -33,11 +38,19 @@ buttonCorporate.addEventListener('click', ()=> {apiCall(`${apiURL}/1/3`).then(co
 //     }
 
 
+
 // Get Auth Token:
-async function apiCall(url = "") {
+async function apiCall(url) {
     // Default options are marked with *
         console.log("sending", url)
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            method: "GET", // *GET, POST, PUT, DELETE, etc.
+            mode: "no-cors", // no-cors, *cors, same-origin
+            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: "same-origin", // include, *same-origin, omit
+            redirect: "follow", // manual, *follow, error
+            referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          });
         return response; // parses JSON response into native JavaScript objects
     }
 

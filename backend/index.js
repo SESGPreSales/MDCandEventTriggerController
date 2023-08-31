@@ -1,6 +1,7 @@
 //const { SerialPort } = require('serialport')
 //const axios = require('axios');
 const { sendRj } = require('./Middleware/sendMdc');
+const { sendUDP } = require('./Middleware/sendMdc');
 require('./Middleware/sendMdc');
 const express = require('express');
 const app = express();
@@ -22,22 +23,25 @@ var channel4hex = new Uint8Array(channel4);
 
 // Screensettings
 const port = 1515;
-const hosts1 = process.env.HOST1 || ['192.168.11.80']; //Define the Ip addresses of the screens to control
-const hosts2 = process.env.HOST2 || ['192.168.11.81']; //Define the Ip addresses of the screens to control
+const hosts1 = process.env.HOST1 || '192.168.11.80'; //Define the Ip addresses of the screens to control
+const hosts2 = process.env.HOST2 || '192.168.11.81'; //Define the Ip addresses of the screens to control
 const commands = [panelonhex, channel1hex, channel2hex, channel3hex, channel4hex]
 
 function sendtoScreen(hosts, content) {   
-    for (let i=0; i < hosts.length ; i++) { sendRj(hosts[i], port, content)  };      
+                sendRj(hosts, port, content)  ;
+            console.log('sendRJ sent')     
 };
 
 
 // Api for screens
 app.get('/:id/:content', function (req, res) {
+        console.log(`Backend received ${req.params.id}`)
         if (req.params.id ==1 ) {
             sendtoScreen( hosts1, commands[req.params.content]);
         }
-        else if  (req.params.id ==2 ) {sendtoScreen( hosts2, commands[req.params.content])}
-        res.status(200).send(`received id: ${req.params.id} content ${req.params.content}` )
+        else if  (req.params.id ==2 ) { sendUDP(hosts1, 5000, req.params.content)}
+        
+        res.status(200).send(console.log(`received id: ${req.params.id} content ${req.params.content}  `) )
 })
 
 // Comment : Run < export NODE_OPTIONS="--max-old-space-size=2048" > before starting node app
