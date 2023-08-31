@@ -10,7 +10,6 @@ services:
     environment:
       HOST1: "192.168.243.66"  #defines displays to control. Comma separated list 
       HOST2: "192.168.243.101"  #defines displays to control. Comma separated list 
-      MODE: "UDP"  # "MDC" or "UDP" UDP is used to send Event triggers, MDC sends TCP commands
 
   frontend1:
     build: frontend/.
