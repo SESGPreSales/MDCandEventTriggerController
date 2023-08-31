@@ -1,21 +1,42 @@
 const host = document.location.host;
-console.log("the host is: ", host);
-const apiURL = `http://${host}:3000`
-
+const hostURL = host.split(':')
+console.log(`The host is : ${hostURL[0]}`)
+const apiURL = `http://${hostURL[0]}:3000`
 
 
 // Listeners
-const buttonQSR = document.querySelector(".item1");
-const buttonFashion = document.querySelector(".item2");
-const buttonCorporate = document.querySelector(".item3");
-const buttonOnOff = document.querySelector(".item4");
+const button1 = document.querySelector(".item1");
+const button2 = document.querySelector(".item2");
+const button3 = document.querySelector(".item3");
+const button4 = document.querySelector(".item4");
+const button5 = document.querySelector(".item5");
+const button6 = document.querySelector(".item6");
+const button7 = document.querySelector(".item7");
+const button8 = document.querySelector(".item8");
+const button9 = document.querySelector(".item9");
+const button10 = document.querySelector(".item10");
+const button11 = document.querySelector(".item11");
+const button12 = document.querySelector(".item12");
+const button13 = document.querySelector(".item13");
+
 const buttons = document.querySelectorAll(".button");
 
-// Eventlisteners
-buttonQSR.addEventListener('click', ()=> {apiCall(`${apiURL}/2/due`).then(console.log("sentcommand"))});
-buttonFashion.addEventListener('click', ()=> {apiCall(`${apiURL}/1/2`).then(console.log("sentcommand"))});
-buttonCorporate.addEventListener('click', ()=> {apiCall(`${apiURL}/1/3`).then(console.log("sentcommand"))});
-buttonOnOff.addEventListener('click', ()=> {apiCall(`${apiURL}/1/4`).then(console.log("sentcommand"))});
+// Eventlisteners to call API
+button1.addEventListener('click', ()=> {apiCall(`${apiURL}/2/uno`)});
+button2.addEventListener('click', ()=> {apiCall(`${apiURL}/2/due`)});
+button3.addEventListener('click', ()=> {apiCall(`${apiURL}/2/tre`)});
+button4.addEventListener('click', ()=> {apiCall(`${apiURL}/2/quattro`)});
+button5.addEventListener('click', ()=> {apiCall(`${apiURL}/2/cinque`)});
+button6.addEventListener('click', ()=> {apiCall(`${apiURL}/2/sei`)});
+// button7.addEventListener('click', ()=> {apiCall(`${apiURL}/2/sette`)});
+// button8.addEventListener('click', ()=> {apiCall(`${apiURL}/2/otto`)});
+// button9.addEventListener('click', ()=> {apiCall(`${apiURL}/2/nove`)});
+// button10.addEventListener('click', ()=> {apiCall(`${apiURL}/2/dieci`)});
+// button11.addEventListener('click', ()=> {apiCall(`${apiURL}/2/undici`)});
+// button12.addEventListener('click', ()=> {apiCall(`${apiURL}/2/dodici`)});
+// button13.addEventListener('click', ()=> {apiCall(`${apiURL}/2/tredici`)});
+
+
 
 //Call API Call
 // async function changeChannel(url = "", data = {}, token) {
@@ -42,7 +63,7 @@ buttonOnOff.addEventListener('click', ()=> {apiCall(`${apiURL}/1/4`).then(consol
 // Get Auth Token:
 async function apiCall(url) {
     // Default options are marked with *
-        console.log("sending", url)
+        //console.log("sending", url)
         const response = await fetch(url, {
             method: "GET", // *GET, POST, PUT, DELETE, etc.
             mode: "no-cors", // no-cors, *cors, same-origin
