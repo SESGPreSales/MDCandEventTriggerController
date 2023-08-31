@@ -29,15 +29,21 @@ clone this repo to your local workspace
 ## To modify
 ### docker-compose.yml
 First define the IP address of the screens to control. Note that in the example we have two different frontends, exposed to port 8081 and 8082, each of them controlls a different set of screens (HOST1 or HOST2).
-    environment:
-      HOST1: "<IP Screen 1>"  #defines displays to control. Comma separated list 
-      HOST2: "<IP Screen 2>"  #defines displays to control. Comma separated list 
+> environment:
+> 
+> HOST1: "<IP Screen 1>"  #defines displays to control. Comma separated list
+> 
+> HOST2: "<IP Screen 2>"  #defines displays to control. Comma separated list 
 
 In case you just need one Touchscreen to controll one or a group of screen, please use HOST1 and remove the frontend2 part of the docker-compose file
-     frontend2:
-    build: frontend/.
-    ports:
-      - "8082:80"
+> frontend2:
+> 
+> build: frontend/.
+> 
+> ports:
+> 
+>  - "8082:80"
+> 
 
 ### Index.html
 Add or remove items (buttons) (comment out if not needed)
