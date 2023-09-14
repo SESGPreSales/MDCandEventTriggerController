@@ -1,7 +1,7 @@
 const host = document.location.host;
 const hostURL = host.split(':')
 const hostPort = hostURL[1];
-const mode = 'UDP' || 'UDP'; //UDP is default
+const mode = process.env.MODE || 'UDP'; //UDP is default
 
 console.log(`The host is : ${hostURL[0]} and port is ${hostPort}`)
 console.log(`Mode is set to ${mode}`)
